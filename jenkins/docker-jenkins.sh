@@ -1,5 +1,7 @@
 #!/bin/bash -eu
 
+COMPOSE_PATH="$HOME/jenkins/jenkins-docker-compose.yml"
+
 checkError() {
     if [[ $# -eq 2 ]] && [[ $1 -ne 0 ]]; then
         echo "Failed to start $2"
@@ -10,7 +12,7 @@ checkError() {
 dockerComposeUp() {
     echo "Composing Jenkins containers ..."
 
-    docker-compose -f "$HOME/scripts/docker-jenkins-compose.yml" up -d
+    docker-compose -f $COMPOSE_PATH up -d
     checkError $? "Jenkins compose up"
 
     echo "Successfully composed Jenkins containers !"
@@ -18,7 +20,7 @@ dockerComposeUp() {
 
 dockerComposeDown() {
     echo "Stopping Jenkins containers ..."
-    docker-compose -f "$HOME/scripts/docker-jenkins-compose.yml" down
+    docker-compose -f $COMPOSE_PATH down
     checkError $? "Jenkins compose down"
 
     echo "Successfully stopped Jenkins containers !"
