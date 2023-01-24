@@ -1,3 +1,5 @@
 #!/bin/bash -eu
 
-useradd -s /bin/bash -m jenkins
+CJENV="/var/repositories/CJ-ENV"
+
+useradd -s /bin/bash -d $CJENV/jenkins/ jenkins
