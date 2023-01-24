@@ -6,7 +6,7 @@ Type=oneshot
 User=jenkins
 Group=jenkins
 RemainAfterExit=yes
-ExecStart=/home/jenkins/jenkins/docker-jenkins.sh start
+ExecStart=/home/jenkins/jenkins/docker-jenkins.sh
 ExecStop=/home/jenkins/jenkins/docker-jenkins.sh stop
 
 [Install]
