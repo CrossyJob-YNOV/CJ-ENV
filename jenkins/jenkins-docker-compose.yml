@@ -39,7 +39,7 @@ services:
     networks:
       - jenkins-network
     ports:
-      - "8081:8080"
+      - "8080:8080"
       - "50000:50000"
     volumes:
       - data:/var/jenkins_home
