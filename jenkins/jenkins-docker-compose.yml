@@ -34,7 +34,7 @@ services:
       context: .
       dockerfile: "./jenkins.Dockerfile"
     pull_policy: build
-    user: "1000:1000"
+    user: "1000:121"
     restart: unless-stopped
     networks:
       - jenkins-network
@@ -44,6 +44,8 @@ services:
     volumes:
       - data:/var/jenkins_home
       - certs:/certs/client:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
     environment:
       - DOCKER_HOST=tcp://docker:2376
       - DOCKER_CERT_PATH=/certs/client
