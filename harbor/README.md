@@ -14,3 +14,12 @@
 
 4. On lance le programme d'installation, puis une fois terminé, on retrouve harbor dans notre navigateur
    à l'adresse du hostname.
+
+5. Comme nous n'utilisons pas HTTPS, on ajoute notre registry à la liste des **insecure registries** :
+   ```shell
+   vi /etc/docker/daemon.json
+   ```
+   Ajouter à la fin :
+   ```json
+   "insecure-registries": ["51.159.160.76:8081"]
+   ```

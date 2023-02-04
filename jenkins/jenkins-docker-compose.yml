@@ -45,7 +45,7 @@ services:
       - data:/var/jenkins_home
       - certs:/certs/client:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker
+#      - /usr/bin/docker:/usr/bin/docker
     environment:
       - DOCKER_HOST=tcp://docker:2376
       - DOCKER_CERT_PATH=/certs/client
