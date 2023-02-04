@@ -1,5 +1,5 @@
 [Unit]
-After=network.target
+After=docker.service
 
 [Service]
 Type=oneshot
