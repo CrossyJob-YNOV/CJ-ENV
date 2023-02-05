@@ -6,6 +6,6 @@ spec:
   selector:
     app: ci-listener
   ports:
-    - name: ci-listener-http
+    - name: ci-listnr-http
       port: 8888
       targetPort: 8888
