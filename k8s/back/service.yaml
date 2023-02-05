@@ -8,3 +8,4 @@ spec:
   ports:
     - name: back-http
       port: 80
+      targetPort: 9090
