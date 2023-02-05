@@ -34,6 +34,10 @@ func main() {
 }
 
 func startServer(port *uint, config *rest.Config) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		log.Println("=>", r.URL.Path)
+	})
+
 	for job, deploymentName := range jobMapping {
 		jobLocks[deploymentName] = new(sync.Mutex)
 		http.HandleFunc("/job/"+job, handleJob(deploymentName, config))
