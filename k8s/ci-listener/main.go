@@ -74,7 +74,10 @@ func handleJob(deploymentName string, config *rest.Config) func(http.ResponseWri
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
+
+		// Add tempo between deployment downscaling and upscaling
 		time.Sleep(10 * time.Second)
+
 		// Scale back the deployment to create pods with the lastest image
 		log.Printf("Scaling back deployment %q to %d\n", deploymentName, initialScale.Spec.Replicas)
 		_, err = deployments.UpdateScale(context.Background(), deploymentName, initialScale, metav1.UpdateOptions{})
