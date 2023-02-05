@@ -4,8 +4,8 @@ metadata:
   name: front-service
 spec:
   selector:
-    app.kubernetes.io/name: front
+    app: front
   ports:
     - name: front-http
       port: 80
-      targetPort: 3000
+      targetPort: 80 # 3000
