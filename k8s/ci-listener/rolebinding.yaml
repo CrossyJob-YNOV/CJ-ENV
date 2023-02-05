@@ -6,7 +6,6 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: ci-listener-sa
-    apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
   name: pod-slayer-role
