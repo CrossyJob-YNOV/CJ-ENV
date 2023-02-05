@@ -9,7 +9,7 @@
 2. ```shell
    ln -s /data/CJ-ENV/k8s/minikube-kubernetes.service /etc/systemd/system/
    systemctl daemon-reload
-   systemctl enable --now minikube-kubernetes
+   systemctl enable minikube-kubernetes
    ```
 
 3. Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
@@ -28,5 +28,11 @@
    
 6. Start Minikube:
     ```shell
-    minikube start --driver=docker
+    systemctl start minikube-kubernetes
     ```
+   
+7. Enable Ingress
+   ```shell
+   minikube addons enable ingress
+   minikube addons enable ingress-dns
+   ```
