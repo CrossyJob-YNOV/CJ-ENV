@@ -6,15 +6,12 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"path/filepath"
 	"strings"
 	"sync"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
-	"k8s.io/client-go/tools/clientcmd"
-	"k8s.io/client-go/util/homedir"
 )
 
 var jobMapping = map[string]string{
@@ -25,20 +22,12 @@ var jobMapping = map[string]string{
 var jobLocks = map[string]*sync.Mutex{}
 
 func main() {
-	var kubeconfig *string
-	if home := homedir.HomeDir(); home != "" {
-		kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
-	} else {
-		kubeconfig = flag.String("kubeconfig", "", "absolute path to the kubeconfig file")
-	}
-
 	port := flag.Uint("port", 8888, "listening port")
-
 	flag.Parse()
 
-	config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
+	config, err := rest.InClusterConfig()
 	if err != nil {
-		log.Fatalln("Can't build config:", err)
+		panic(err.Error())
 	}
 
 	startServer(port, config)
@@ -84,7 +73,7 @@ func handleJob(deploymentName string, config *rest.Config) func(http.ResponseWri
 			}
 		}
 
-		fmt.Printf("Update done !")
+		fmt.Println("Update done !")
 
 		// deployments := clientset.AppsV1().Deployments("default")
 		//
