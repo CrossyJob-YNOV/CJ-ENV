@@ -74,37 +74,6 @@ func handleJob(deploymentName string, config *rest.Config) func(http.ResponseWri
 		}
 
 		fmt.Println("Update done !")
-
-		// deployments := clientset.AppsV1().Deployments("default")
-		//
-		// initialScale, err := deployments.GetScale(context.Background(), deploymentName, metav1.GetOptions{})
-		// if err != nil {
-		// 	log.Printf("Error: %v\n", err)
-		// 	w.WriteHeader(http.StatusInternalServerError)
-		// 	return
-		// }
-		// // Scale the deployment to zero to delete all pods
-		// log.Printf("Scaling deployment %q to 0 ...\n", deploymentName)
-		// zeroScale := *initialScale
-		// zeroScale.Spec.Replicas = 0
-		// _, err = deployments.UpdateScale(context.Background(), deploymentName, &zeroScale, metav1.UpdateOptions{})
-		// if err != nil {
-		// 	log.Printf("Error: %v\n", err)
-		// 	w.WriteHeader(http.StatusInternalServerError)
-		// 	return
-		// }
-		//
-		// // Add tempo between deployment downscaling and upscaling
-		// time.Sleep(10 * time.Second)
-		//
-		// // Scale back the deployment to create pods with the lastest image
-		// log.Printf("Scaling back deployment %q to %d\n", deploymentName, initialScale.Spec.Replicas)
-		// _, err = deployments.UpdateScale(context.Background(), deploymentName, initialScale, metav1.UpdateOptions{})
-		// if err != nil {
-		// 	log.Printf("Error: %v\n", err)
-		// 	w.WriteHeader(http.StatusInternalServerError)
-		// 	return
-		// }
 		w.WriteHeader(http.StatusOK)
 	}
 }
