@@ -4,7 +4,7 @@ metadata:
   name: back-service
 spec:
   selector:
-    app.kubernetes.io/name: back
+    app: back
   ports:
     - name: back-http
       port: 80
