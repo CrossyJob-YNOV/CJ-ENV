@@ -4,6 +4,6 @@ metadata:
   namespace: default
   name: pod-slayer-role
 rules:
-  - apiGroups: [ "" ] # "" indicates the core API group
+  - apiGroups: [ "rbac.authorization.k8s.io" ]
     resources: [ "pods" ]
     verbs: [ "get", "list", "delete" ]
