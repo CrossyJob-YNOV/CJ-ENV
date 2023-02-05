@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ci-listener-service
+spec:
+  selector:
+    app: ci-listener
+  ports:
+    - name: ci-listener-http
+      port: 8888
+      targetPort: 8888
