@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+	"time"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
@@ -73,6 +74,7 @@ func handleJob(deploymentName string, config *rest.Config) func(http.ResponseWri
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
+		time.Sleep(10 * time.Second)
 		// Scale back the deployment to create pods with the lastest image
 		log.Printf("Scaling back deployment %q to %d\n", deploymentName, initialScale.Spec.Replicas)
 		_, err = deployments.UpdateScale(context.Background(), deploymentName, initialScale, metav1.UpdateOptions{})
