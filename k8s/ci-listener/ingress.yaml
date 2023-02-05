@@ -8,10 +8,10 @@ spec:
   rules:
     - http:
         paths:
-          - path: /ci-listener
+          - path: /ci-listener/
             pathType: Prefix
             backend:
               service:
-                name: ci-listnr-service
+                name: ci-listener-service
                 port:
                   number: 8888
