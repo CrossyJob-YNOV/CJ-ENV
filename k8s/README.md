@@ -36,3 +36,9 @@
    minikube addons enable ingress
    minikube addons enable ingress-dns
    ```
+   
+8. Create all deployments, services, ...
+   ```shell
+   cd ~kubernetes/k8s
+   kubectl apply -f back/ front/ ci-listener/
+   ```
