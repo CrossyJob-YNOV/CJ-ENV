@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: front
-          image: nginx # "51.159.160.76:8081/crossy-job/xxx"
+          image: nginx # "harbor.crossyjob.ezyostudio.com/crossy-job/xxx"
           imagePullPolicy: Always
           ports:
             - name: front-http
