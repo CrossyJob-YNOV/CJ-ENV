@@ -12,33 +12,43 @@
    systemctl enable minikube-kubernetes
    ```
 
-3. Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+3. Download [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+   ```shell
+   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   ```
 
-4. Download Minikube:
+4. Install kubectl
+   ```shell
+   sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+   ```
+
+5. Download Minikube:
     ```shell
     curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
       && chmod +x minikube
     ```
 
-5. Install Minikube:
+6. Install Minikube:
     ```shell
     sudo mkdir -p /usr/local/bin/
     sudo install minikube /usr/local/bin/
     ```
-   
-6. Start Minikube:
+
+7. Start Minikube:
     ```shell
     systemctl start minikube-kubernetes
     ```
-   
-7. Enable Ingress
+
+8. Enable Ingress
    ```shell
    minikube addons enable ingress
    minikube addons enable ingress-dns
    ```
-   
-8. Create all deployments, services, ...
+
+9. Create all deployments, services, ...
    ```shell
    cd ~kubernetes/k8s
-   kubectl apply -f back/ front/ ci-listener/
+   kubectl apply -f back/
+   kubectl apply -f front/
+   kubectl apply -f ci-listener/
    ```
