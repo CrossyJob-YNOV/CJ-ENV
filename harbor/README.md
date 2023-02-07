@@ -28,6 +28,27 @@
 ## Ajout du SSL
 Dans un second temps, comme github ne pouvait push des images dockers sur des registry non sécurisé, nous avons généré des certificats SSL avec certbot.
 
+De ce fait, on re modifie la configuration d'harbor.
+
+```
+hostname: harbor.crossyjob.ezyostudio.com
+
+# http related config
+http:
+  # port for http, default is 80. If https enabled, this port will redirect to https port
+  port: 8081
+
+# https related config
+#https:
+  # https port for harbor, default is 443
+  #port: 8082
+  # The path of cert and key files for nginx
+ # certificate: /home/harbor/certif/fullchain.pem
+  #private_key: /home/harbor/certif/privkey.pem
+```
+
+On ajoute donc le hostname avec notre url d'accès, comme le HTTPS est géré par nginx, on désactive la configuration en https avec harbor. Le reverse proxy d'nginx se fera entre le port 443 du server et le port 8081 du container d'harbor.
+
 ```
 sudo certbot --nginx -d example.com -d www.example.com 
 
