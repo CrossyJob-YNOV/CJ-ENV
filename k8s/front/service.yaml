@@ -8,4 +8,4 @@ spec:
   ports:
     - name: front-http
       port: 80
-      targetPort: 80 # 3000
+      targetPort: 3000
