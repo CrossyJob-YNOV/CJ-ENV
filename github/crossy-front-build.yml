@@ -11,6 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: yarn
+      - uses: docker/login-action@v2
+        with:
+          registry: harbor.crossyjob.ezyostudio.com
+          username: ${{ secrets.REGISTRY_LOGIN }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'
+      - run: yarn --frozen-lockfile
       - run: yarn lintfix
-      - run: docker build .
+      - uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: harbor.crossyjob.ezyostudio.com/crossy-job/crossy-job-front:latest   
