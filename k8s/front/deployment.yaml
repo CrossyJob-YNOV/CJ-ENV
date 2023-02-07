@@ -16,11 +16,11 @@ spec:
     spec:
       containers:
         - name: front
-          image: nginx # "harbor.crossyjob.ezyostudio.com/crossy-job/xxx"
+          image: "harbor.crossyjob.ezyostudio.com/crossy-job/crossy-job-front"
           imagePullPolicy: Always
           ports:
             - name: front-http
-              containerPort: 80 # 3000
+              containerPort: 3000
           resources:
             limits:
               memory: "256Mi"

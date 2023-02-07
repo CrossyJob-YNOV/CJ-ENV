@@ -1,0 +1,1 @@
+Dans ce dossier, on retrouve une capture d'écran de notre configuration Cloudflare qui redirige les sous-domaines *harbor.crossyjob.ezyostudio.com* *crossyjob.ezyostudio.com* et *jenkins.crossyjob.ezyostudio.com* vers notre serveur, qui lui redirigera ensuite vers les ports des services.
